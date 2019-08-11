@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.demo.dao.ControlModelMapper">
+    <resultMap id="BaseResultMap" type="com.example.demo.model.ControlModel">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="uuid" property="uuid" jdbcType="VARCHAR"/>
+        <result column="widget_name" property="widgetName" jdbcType="VARCHAR"/>
+        <result column="mi_height" property="miHeight" jdbcType="VARCHAR"/>
+        <result column="mi_width" property="miWidth" jdbcType="VARCHAR"/>
+        <result column="mi_x" property="miX" jdbcType="VARCHAR"/>
+        <result column="mi_y" property="miY" jdbcType="VARCHAR"/>
+        <result column="mi_params" property="miParams" jdbcType="VARCHAR"/>
+        <result column="zindex" property="zindex" jdbcType="VARCHAR"/>
+        <result column="parent_id" property="parentId" jdbcType="VARCHAR"/>
+        <result column="page_uuid" property="pageUuid" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, uuid, widget_name, mi_height, mi_width, mi_x, mi_y, mi_params, zindex, parent_id,
+    page_uuid
+  </sql>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from controls
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insertSelective" parameterType="com.example.demo.model.ControlModel">
+        insert into controls
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="uuid != null">
+                uuid,
+            </if>
+            <if test="widgetName != null">
+                widget_name,
+            </if>
+            <if test="miHeight != null">
+                mi_height,
+            </if>
+            <if test="miWidth != null">
+                mi_width,
+            </if>
+            <if test="miX != null">
+                mi_x,
+            </if>
+            <if test="miY != null">
+                mi_y,
+            </if>
+            <if test="miParams != null">
+                mi_params,
+            </if>
+            <if test="zindex != null">
+                zindex,
+            </if>
+            <if test="parentId != null">
+                parent_id,
+            </if>
+            <if test="pageUuid != null">
+                page_uuid,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="uuid != null">
+                #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="widgetName != null">
+                #{widgetName,jdbcType=VARCHAR},
+            </if>
+            <if test="miHeight != null">
+                #{miHeight,jdbcType=VARCHAR},
+            </if>
+            <if test="miWidth != null">
+                #{miWidth,jdbcType=VARCHAR},
+            </if>
+            <if test="miX != null">
+                #{miX,jdbcType=VARCHAR},
+            </if>
+            <if test="miY != null">
+                #{miY,jdbcType=VARCHAR},
+            </if>
+            <if test="miParams != null">
+                #{miParams,jdbcType=VARCHAR},
+            </if>
+            <if test="zindex != null">
+                #{zindex,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="pageUuid != null">
+                #{pageUuid,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.ControlModel">
+        update controls
+        <set>
+            <if test="uuid != null">
+                uuid = #{uuid,jdbcType=VARCHAR},
+            </if>
+            <if test="widgetName != null">
+                widget_name = #{widgetName,jdbcType=VARCHAR},
+            </if>
+            <if test="miHeight != null">
+                mi_height = #{miHeight,jdbcType=VARCHAR},
+            </if>
+            <if test="miWidth != null">
+                mi_width = #{miWidth,jdbcType=VARCHAR},
+            </if>
+            <if test="miX != null">
+                mi_x = #{miX,jdbcType=VARCHAR},
+            </if>
+            <if test="miY != null">
+                mi_y = #{miY,jdbcType=VARCHAR},
+            </if>
+            <if test="miParams != null">
+                mi_params = #{miParams,jdbcType=VARCHAR},
+            </if>
+            <if test="zindex != null">
+                zindex = #{zindex,jdbcType=VARCHAR},
+            </if>
+            <if test="parentId != null">
+                parent_id = #{parentId,jdbcType=VARCHAR},
+            </if>
+            <if test="pageUuid != null">
+                page_uuid = #{pageUuid,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from controls;
+    </select>
+</mapper>
