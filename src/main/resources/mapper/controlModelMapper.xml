@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.demo.dao.ControlModelMapper">
     <resultMap id="BaseResultMap" type="com.example.demo.model.ControlModel">
-        <id column="id" property="id" jdbcType="BIGINT"/>
         <result column="uuid" property="uuid" jdbcType="VARCHAR"/>
         <result column="widget_name" property="widgetName" jdbcType="VARCHAR"/>
         <result column="mi_height" property="miHeight" jdbcType="VARCHAR"/>
@@ -15,19 +14,16 @@
         <result column="page_uuid" property="pageUuid" jdbcType="VARCHAR"/>
     </resultMap>
     <sql id="Base_Column_List">
-    id, uuid, widget_name, mi_height, mi_width, mi_x, mi_y, mi_params, zindex, parent_id,
+    uuid, widget_name, mi_height, mi_width, mi_x, mi_y, mi_params, zindex, parent_id,
     page_uuid
   </sql>
-    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
     delete from controls
-    where id = #{id,jdbcType=BIGINT}
+    where uuid = #{uuid,jdbcType=VARCHAR}
   </delete>
     <insert id="insertSelective" parameterType="com.example.demo.model.ControlModel">
         insert into controls
         <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                id,
-            </if>
             <if test="uuid != null">
                 uuid,
             </if>
@@ -60,9 +56,6 @@
             </if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null">
-                #{id,jdbcType=BIGINT},
-            </if>
             <if test="uuid != null">
                 #{uuid,jdbcType=VARCHAR},
             </if>
@@ -98,9 +91,6 @@
     <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.model.ControlModel">
         update controls
         <set>
-            <if test="uuid != null">
-                uuid = #{uuid,jdbcType=VARCHAR},
-            </if>
             <if test="widgetName != null">
                 widget_name = #{widgetName,jdbcType=VARCHAR},
             </if>
@@ -129,7 +119,7 @@
                 page_uuid = #{pageUuid,jdbcType=VARCHAR},
             </if>
         </set>
-        where id = #{id,jdbcType=BIGINT}
+        where uuid = #{uuid,jdbcType=VARCHAR}
     </update>
     <select id="selectAll" resultMap="BaseResultMap">
         select

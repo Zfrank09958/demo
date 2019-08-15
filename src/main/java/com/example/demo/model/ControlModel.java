@@ -1,8 +1,6 @@
 package com.example.demo.model;
 
 public class ControlModel {
-    private Long id;
-
     private String uuid;
 
     private String widgetName;
@@ -25,14 +23,6 @@ public class ControlModel {
 
     public ControlModel() {
         super();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getUuid() {

@@ -8,7 +8,7 @@ import java.util.List;
 
 @Mapper
 public interface ControlModelMapper {
-    int deleteByPrimaryKey(Long id);
+    int deleteByPrimaryKey(String uuid);
 
     int insertSelective(ControlModel record);
 

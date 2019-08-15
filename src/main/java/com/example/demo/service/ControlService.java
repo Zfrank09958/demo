@@ -26,7 +26,7 @@ public class ControlService {
     }
 
 
-    public void deleteControl(Long id){
-        controlModelMapper.deleteByPrimaryKey(id);
+    public void deleteControl(String uuid){
+        controlModelMapper.deleteByPrimaryKey(uuid);
     }
 }

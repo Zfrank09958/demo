@@ -44,8 +44,8 @@ public class demoController {
 
     @ApiOperation("deleteControl")
     @DeleteMapping("/deleteControl")
-    public ResultVO deleteControl(@RequestParam("id") Long id){
-        controlService.deleteControl(id);
+    public ResultVO deleteControl(@RequestParam("uuid") String uuid){
+        controlService.deleteControl(uuid);
         return ResultVO.success(null);
     }
 
