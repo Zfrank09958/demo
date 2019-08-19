@@ -14,3 +14,5 @@ CREATE TABLE `controls` (
   KEY `parent_id_index` (`parent_id`),
   KEY `page_uuid_index` (`page_uuid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+

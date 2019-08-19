@@ -13,16 +13,16 @@ import java.util.Map;
 
 @Service
 public class DbService {
-    @Value("${spring.datasource.driver-class-name}")
+    @Value("${sqlexec.driver}")
     private String dirverClass;
 
-    @Value("${spring.datasource.url}")
+    @Value("${sqlexec.url}")
     private String url;
 
-    @Value("${spring.datasource.username}")
+    @Value("${sqlexec.username}")
     private String username;
 
-    @Value("${spring.datasource.password}")
+    @Value("${sqlexec.password}")
     private String password;
 
     public ResultVO execSql(String sqlStr) {
