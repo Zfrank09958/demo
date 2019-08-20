@@ -16,20 +16,22 @@ public class DbService {
     @Value("${sqlexec.driver}")
     private String dirverClass;
 
-    @Value("${sqlexec.url}")
-    private String url;
+    // @Value("${sqlexec.url}")
+    // private String url;
 
-    @Value("${sqlexec.username}")
-    private String username;
+    // @Value("${sqlexec.username}")
+    // private String username;
 
-    @Value("${sqlexec.password}")
-    private String password;
+    // @Value("${sqlexec.password}")
+    // private String password;
 
-    public ResultVO execSql(String sqlStr) {
+    public ResultVO execSql(String sqlStr, String url, String username, String password) {
         Connection conn;
         PreparedStatement ps;
         ResultSet rs;
         List<Map<String, Object>> allResult = new LinkedList<>();
+
+
         try {
             conn = DbTools.getConnections(dirverClass, url, username, password);
             ps = conn.prepareStatement(sqlStr);

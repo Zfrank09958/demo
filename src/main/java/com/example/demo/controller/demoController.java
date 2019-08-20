@@ -22,21 +22,24 @@ public class demoController {
 
     @ApiOperation("execSql")
     @PostMapping("/execSql")
-    public ResultVO execSql(@RequestParam("sqlStr") String sqlStr) {
+    @CrossOrigin
+    public ResultVO execSql(@RequestParam("sqlStr") String sqlStr,@RequestParam String url,@RequestParam String username,@RequestParam String password) {
         if (StringUtils.isEmpty(sqlStr)) {
             return ResultVO.error("empty Str!");
         }
-        return dbService.execSql(sqlStr);
+        return dbService.execSql(sqlStr,url,username,password);
     }
 
     @ApiOperation("queryControls")
     @PostMapping("/queryControls")
+    @CrossOrigin
     public ResultVO queryControls(){
         return controlService.queryControls();
     }
 
     @ApiOperation("addControl")
     @PostMapping("/addControl")
+    @CrossOrigin
     public ResultVO addControl(@RequestBody ControlModel controlModel){
         controlService.insertControl(controlModel);
         return ResultVO.success(null);
@@ -44,6 +47,7 @@ public class demoController {
 
     @ApiOperation("deleteControl")
     @DeleteMapping("/deleteControl")
+    @CrossOrigin
     public ResultVO deleteControl(@RequestParam("uuid") String uuid){
         controlService.deleteControl(uuid);
         return ResultVO.success(null);
@@ -51,6 +55,7 @@ public class demoController {
 
     @ApiOperation("updateControl")
     @PostMapping("/updateControl")
+    @CrossOrigin
     public ResultVO updateControl(@RequestBody ControlModel controlModel){
         controlService.updateControl(controlModel);
         return ResultVO.success(null);
