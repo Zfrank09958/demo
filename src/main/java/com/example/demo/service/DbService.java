@@ -13,8 +13,8 @@ import java.util.Map;
 
 @Service
 public class DbService {
-    @Value("${sqlexec.driver}")
-    private String dirverClass;
+    //@Value("${sqlexec.driver}")
+    //private String dirverClass;
 
     // @Value("${sqlexec.url}")
     // private String url;
@@ -25,12 +25,15 @@ public class DbService {
     // @Value("${sqlexec.password}")
     // private String password;
 
-    public ResultVO execSql(String sqlStr, String url, String username, String password) {
+    public ResultVO execSql(String sqlStr, String url, String username, String password, String driver) {
         Connection conn;
         PreparedStatement ps;
         ResultSet rs;
         List<Map<String, Object>> allResult = new LinkedList<>();
-
+        String dirverClass = "com.mysql.jdbc.Driver";
+        if ("sqlserver".equals(driver)) {
+            dirverClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        }
 
         try {
             conn = DbTools.getConnections(dirverClass, url, username, password);
