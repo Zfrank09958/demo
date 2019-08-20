@@ -25,13 +25,13 @@ public class DbService {
     // @Value("${sqlexec.password}")
     // private String password;
 
-    public ResultVO execSql(String sqlStr, String url, String username, String password, String driver) {
+    public ResultVO execSql(String sqlStr, String url, String username, String password, String databaseType) {
         Connection conn;
         PreparedStatement ps;
         ResultSet rs;
         List<Map<String, Object>> allResult = new LinkedList<>();
         String dirverClass = "com.mysql.jdbc.Driver";
-        if ("sqlserver".equals(driver)) {
+        if ("sqlserver".equals(databaseType)) {
             dirverClass = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
         }
 

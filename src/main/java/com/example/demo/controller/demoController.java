@@ -28,11 +28,11 @@ public class demoController {
                             @RequestParam("url") @ApiParam("sql 地址 jdbc:mysql://127.0.0.1:3306/xvue_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT") String url,
                             @RequestParam("username") String username,
                             @RequestParam("password") String password,
-                            @RequestParam("driver") @ApiParam("mysql 或者 sqlserver") String driver) {
+                            @RequestParam("driver") @ApiParam("mysql 或者 sqlserver") String databaseType) {
         if (StringUtils.isEmpty(sqlStr)) {
             return ResultVO.error("empty Str!");
         }
-        return dbService.execSql(sqlStr, url, username, password, driver);
+        return dbService.execSql(sqlStr, url, username, password, databaseType);
     }
 
     @ApiOperation("queryControls")
